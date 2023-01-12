@@ -8,6 +8,7 @@ Step 2， 编写K8S配置文件，部署应用程序到集群
 
 ### 2.1 使用 Kubectl 创建部署
 
+- 执行 `git rebase step-2`
 - 阅读[官方文档](https://kubernetes.io/zh-cn/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)，了解基本概念
 - 部署 `book-service`
   - 打包创建容器镜像

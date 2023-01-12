@@ -7,6 +7,7 @@ Step 6. GitOps 持续部署
 
 ### 6-2.1 在集群安装运行 ArgoCD
 
+- 执行 `git rebase step-6-2`
 - 参考官方文档，理解 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) 的基本概念
 - 在 layer1 安装 ArgoCD，Terraform 配置文件已经写好，安装应用即可
 

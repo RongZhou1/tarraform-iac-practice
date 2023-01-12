@@ -16,7 +16,8 @@ Step 4. 部署应用程序到两套环境
 - 有些配置来源于不同环境的基础设施，我们将它们放到名为 `${SERVICE_NAME}-terraform` 的配置文件中
 - 有些来源于不同环境的应用配置，我们将它们放到名为 `${SERVICE_NAME}` 的配置文件中
 -
-### 3.1 资源声明文件中统一使用管理配置文件
+### 4.1 资源声明文件中统一使用管理配置文件
+- 执行 `git rebase step-4`
 - 修改 Step 2 中 创建的 `deployment.yaml` 和 `service.yaml`
   - 统一使用 `${SERVICE_NAME}` 替换服务名称，之后可以通过 `envsubst` 工具进行环境变量的替换
   - 添加 `version: ${VERSION}` 作为资源的 label
@@ -38,7 +39,7 @@ Step 4. 部署应用程序到两套环境
             optional: true
     ```
 
-### 3.2 使用 Kustomize 管理 Kubernetes 对象
+### 4.2 使用 Kustomize 管理 Kubernetes 对象
 
 - 阅读 [官方文档](https://kubernetes.io/zh-cn/docs/tasks/manage-kubernetes-objects/kustomization/) 理解 Kustomize的应用场景，本案例主要使用它的 base 和 overlays 的功能
 - 将 `deployment.yaml` 和 `service.yaml` 作为基准资源文件，放入 `base` 文件夹，并创建 `overlays` 文件夹和对应环境文件夹。

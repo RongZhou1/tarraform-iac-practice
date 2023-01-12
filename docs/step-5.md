@@ -15,6 +15,7 @@ Step 5. 创建 Ingress 控制器，配置出口路由
 
 ### 5.1 使用 Terraform 创建和管理 Ingress 控制器
 
+- 执行 `git rebase step-5`
 - 阅读文档，理解 [Ingress](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/)，[Ingress Controller](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress-controllers/) 的基本概念
   本例选用 Nginx Ingress 作为 Ingress 控制器
 - 配置支持 Nginx Ingress 的 Kind 集群，参考 [Kind文档](https://kind.sigs.k8s.io/docs/user/ingress/)

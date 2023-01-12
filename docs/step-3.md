@@ -1,9 +1,9 @@
 Step 3. 使用 Terraform 管理应用程序所需的两套基础设施
 --
 
-- [x] 创建两套环境
-- [x] 为不同环境创建数据库基础设施
-- [x] 为不同环境创建开发团队自行管理的基础设施配置文件
+- [ ] 创建两套环境
+- [ ] 为不同环境创建数据库基础设施
+- [ ] 为不同环境创建开发团队自行管理的基础设施配置文件
 - [ ] 完成其他应用服务的基础设施搭建
 
 
@@ -19,6 +19,7 @@ Step 3. 使用 Terraform 管理应用程序所需的两套基础设施
 
 ### 3.1 创建两套环境
 
+- 执行 `git rebase step-3`
 - 在 [terraform/kind](../terraform/kind) 文件夹下创建 `layer2/local` 和 `layer2/stable` 目录，用来描述不同环境的基础设置。
 - 在 [main.tf](../terraform/kind/layer2/local/main.tf) 中编写代码，使用 provider - [kubernetes_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) 创建命名空间。
 - 执行 `terraform init`, `terraform apply` 应用配置创建命名空间

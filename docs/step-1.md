@@ -1,9 +1,9 @@
 Step 1， 搭建本地K8S集群
 --
 
-- [ ] 环境准备，软件安装
-- [ ] 使用 Kind 创建集群
-- [ ] 使用 Terraform 管理集群，熟悉其工作流程
+- [x] 环境准备，软件安装
+- [x] 使用 Kind 创建集群
+- [x] 使用 Terraform 管理集群，熟悉其工作流程
 
 ### 1.1 环境准备，软件安装
 
@@ -67,7 +67,7 @@ No kind clusters found.
 
 - 在目录 [terraform/kind/layer0](../terraform/kind/layer0) 下创建 `main.tf`
 - 参考 [kind provider](https://registry.terraform.io/providers/justenwalker/kind/latest) 编写脚本，创建名为 `kind` 的 kind 集群
-- 练习使用命令，观察输出并理解含义
+- 练习使用命令，观察输出和 tfstate 文件，并理解含义
   - terraform init
   - terraform plan
   - terraform apply

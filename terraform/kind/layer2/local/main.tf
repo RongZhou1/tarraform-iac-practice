@@ -5,12 +5,14 @@ locals {
 
 variable "db_password" {}
 
-
-# 使用 provider - kubernetes_namespace 创建名为 local.namespece 的命名空间
-# Task 3.1
+resource "kubernetes_namespace" "namespace" {
+  metadata {
+    name = local.namespace
+  }
+}
 
 module "mysqldb" {
-  depends_on = []  # Task 3.2
+  depends_on = [kubernetes_namespace.namespace]
 
   source = "../../../module/mysql"
 
@@ -19,5 +21,14 @@ module "mysqldb" {
   db_password = var.db_password
 }
 
-# 使用 module 调用 book-service 中的 terraform 资源
-# Task 3.3
+module "book-service" {
+  depends_on = [module.mysqldb]
+
+  source = "../../../../apps/book-service/terraform/kind-local"
+  namespace = local.namespace
+  
+  db_host = module.mysqldb.mysql_db_host
+  db_password = module.mysqldb.mysql_db_password
+  db_port = module.mysqldb.mysql_db_port
+  db_user = module.mysqldb.mysql_db_user
+}

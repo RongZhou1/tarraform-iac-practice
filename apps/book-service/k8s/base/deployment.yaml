@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${SERVICE_NAME}
+  labels:
+    app: ${SERVICE_NAME}
+    version: ${VERSION}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${SERVICE_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${SERVICE_NAME}
+        version: ${VERSION}
+    spec:
+      containers:
+        - name: ${SERVICE_NAME}
+          image: ${SERVICE_NAME}:${VERSION}
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: ${SERVICE_NAME}
+                optional: true
+            - configMapRef:
+                name: ${SERVICE_NAME}-terraform
+                optional: true
+            - secretRef:
+                name: ${SERVICE_NAME}
+                optional: true
+            - secretRef:
+                name: ${SERVICE_NAME}-terraform
+                optional: true

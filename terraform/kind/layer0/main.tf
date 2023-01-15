@@ -5,5 +5,18 @@ resource "kind_cluster" "kind-cluster" {
     kind: Cluster
     nodes:
       - role: control-plane
-    EOF
+        kubeadmConfigPatches:
+        - |
+          kind: InitConfiguration
+          nodeRegistration:
+            kubeletExtraArgs:
+              node-labels: "ingress-ready=true"
+        extraPortMappings:
+        - containerPort: 80
+          hostPort: 80
+          protocol: TCP
+        - containerPort: 443
+          hostPort: 443
+          protocol: TCP
+EOF
 }

@@ -24,3 +24,9 @@ provider "kubectl" {
   config_path = "~/.kube/config"
   config_context_cluster = "kind-kind"
 }
+
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}

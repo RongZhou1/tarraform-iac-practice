@@ -1,9 +1,10 @@
 locals {
   command = "CREATE DATABASE IF NOT EXISTS ${var.db_name};"
+  resource_name = replace(var.db_name, "_", "-")
 }
 resource "kubernetes_job" "mysql-create-db" {
   metadata {
-    name      = "create-database"
+    name      = "create-database-${local.resource_name}"
     namespace = var.namespace
   }
   spec {

@@ -17,7 +17,8 @@ else
     IMAGE="$SERVICE_NAME:$VERSION"
   else
     VERSION="sha-$(git rev-parse --short HEAD)"
-    IMAGE="$SERVICE_NAME:$VERSION"
+    # TODO: 此处应替换为你的库地址
+    IMAGE="ghcr.io/maomaoliu/$SERVICE_NAME:$VERSION"
   fi
   OVERLAY_PATH="./apps/$SERVICE_NAME/k8s/overlays/$DEPLOY_TO"
   MANIFEST_PATH="./k8sbuild/$DEPLOY_TO/$SERVICE_NAME"
@@ -25,7 +26,7 @@ else
   export SERVICE_NAME=$SERVICE_NAME
   export VERSION=$VERSION
   export IMAGE_NAME=$IMAGE
-  export IMAGE_PULL_SECRET="todo"
+  export IMAGE_PULL_SECRET="ghcr-login-secret"
 
   mkdir -p $MANIFEST_PATH
   kubectl kustomize "$OVERLAY_PATH" | envsubst >|"$MANIFEST_PATH/k8s.yaml"

@@ -38,7 +38,7 @@ Step 6. GitOps 持续部署
   参考`验收条件-local`完成验证
 - 在 `layer2/stable` 下编写代码，导入 module `argocd-app` 完成 web-app 的配置，
   创建名为 `web-app-stable-application` 的 Application，参考`验收条件-stable`完成验证
-- 完成其他应用程序的 Terraform 自动化部署脚本并部署，公共部分可以在 `layer2/${env}` 下提取公共模块
+- 完成其他应用程序的 Terraform 自动化部署脚本并部署，公共部分可以在 `layer2/${env}` 下提取公共模块，参考`验收条件-apps`完成验证
 
 #### 验收条件-local
 
@@ -66,3 +66,13 @@ Step 6. GitOps 持续部署
 - push 在上一步已修改的代码到远端代码仓库，等待 CI 执行并成功
 - 观察 `web-app-stable-application` 下的资源变化，等待部署成功且状态再次变成 `healthy`
 - curl http://localhost/stable/api/web-app/books/first-ten ，能够响应并返回空数组
+
+#### 验收条件-apps
+
+- 登录 ArgoCD UI 面板，查看 Applications，存在以下6个 Apps，且状态均为 `healthy`
+  - web-app-local-application
+  - book-service-local-application
+  - order-service-local-application
+  - web-app-stable-application
+  - book-service-stable-application
+  - order-service-stable-application

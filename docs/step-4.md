@@ -88,7 +88,6 @@ Step 4. 部署应用程序到两套环境
   ```bash
   $ cd $(git rev-parse --show-toplevel)
   $ kubectl apply -f k8sbuild/kind-local/book-service/k8s.yaml
-  $ ./scripts/kustomize-build.sh kind-stable
   $ kubectl get svc -n kind-local
   ```
 
@@ -103,7 +102,8 @@ $ kubectl port-forward service/book-service 8090:80 -n kind-local
 
 ### 4.3 完成其他应用服务的更新和部署
 
-
+- 为服务 `order-service` 和 `web-app` 生成环境 `kind-local` 和 `kind-stable` 下的 k8s 资源描述文件
+- 在环境 `kind-local` 下部署 为服务 `order-service` 和 `web-app`
 
 #### 验收条件
 
@@ -113,7 +113,7 @@ $ kubectl port-forward service/book-service 8090:80 -n kind-local
 
   ```bash
   $ lsof -i:8090 # 确认当前端口未被其它进程使用
-  $ kubectl port-forward service/web-app 8090:80
+  $ kubectl port-forward service/web-app 8090:80 -n kind-local
   ```
 
   curl http://localhost:8090/books ，确认与 `book-service` 通信正常

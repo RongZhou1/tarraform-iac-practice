@@ -11,8 +11,9 @@ Step 6. GitOps 持续部署
 ### 6-1.1 使用 GitHub Actions 创建 Workflow
 - 执行 `git rebase step-6-1`
 - 阅读了解 GitHub Actions，[文档](https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions)
-- 按照已完成的流水线设计构建 book-service 的 workflow，见 [.github/workflows/book-service.yaml](../.github/workflows/book-service.yaml)
+- 按照已完成的流水线设计构建 book-service 的 workflow，workflow 代码已完成，见 [.github/workflows/book-service.yaml](../.github/workflows/book-service.yaml)
   ![持续集成流水线价值流图](./images/CI.png)
+- 修改 workflow 代码的执行分支为你练习所在的分支
 - 参考[文档](https://docs.github.com/zh/packages/working-with-a-github-packages-registry/working-with-the-container-registry#%E5%90%91-container-registry-%E9%AA%8C%E8%AF%81)完成 GITHUB_TOKEN 配置，以能够使用 GitHub Actions
 - push 代码并查看 workflow 的运行结果
 
@@ -37,7 +38,7 @@ Step 6. GitOps 持续部署
   export TF_VAR_github_token={your-github-token}
   export TF_VAR_github_user={your-account-name}
   ```
-- 参照 step 1-5，并安装模块 github-registry，在 kind-stable 环境部署 book-service
+- 参照 step 1 - step 5，并安装模块 github-registry，在 kind-stable 环境部署 book-service
 - 在 kind-stable 环境部署其他应用服务
 
 #### 验收条件

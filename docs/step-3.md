@@ -22,7 +22,12 @@ Step 3. 使用 Terraform 管理应用程序所需的两套基础设施
 - 执行 `git rebase step-3`
 - 在 [terraform/kind](../terraform/kind) 文件夹下创建 `layer2/local` 和 `layer2/stable` 目录，用来描述不同环境的基础设置。
 - 在 [main.tf](../terraform/kind/layer2/local/main.tf) 中编写代码，使用 provider - [kubernetes_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) 创建命名空间。
-- 执行 `terraform init`, `terraform apply` 应用配置创建命名空间
+
+
+### 3.2 为不同环境创建数据库基础设施
+
+- 修改 [main.tf](../terraform/kind/layer2/local/main.tf)  中 `module.mysqldb.dependOn`，将 3.1 中创建的资源作为依赖填入，以保证资源的创建顺序
+- 执行 `terraform init`, `terraform apply` 创建命名空间和数据库
 
 #### 验收条件
 
@@ -35,12 +40,6 @@ kind-local           Active   24m
 kind-stable          Active   24m
 ...
 ```
-
-### 3.2 为不同环境创建数据库基础设施
-
-- 修改 [main.tf](../terraform/kind/layer2/local/main.tf)  中 `module.mysqldb.dependOn`，将 3.1 中创建的资源作为依赖填入，以保证资源的创建顺序
-- 执行 `terraform init`, `terraform apply` 创建数据库
-
 
 ### 3.3 为不同环境创建开发团队自行管理的基础设施配置文件
 
@@ -59,7 +58,7 @@ kind-stable          Active   24m
 ```bash
 $ kubectl get cm book-service-terraform -o jsonpath='{.data}' -n kind-local
 {"DB_NAME":"book_service"}%
-$ kkubectl get secret book-service-terraform -o jsonpath='{.data.MYSQL_DB_PASSWORD}' -n kind-local | base64 -d && echo
+$ kubectl get secret book-service-terraform -o jsonpath='{.data.MYSQL_DB_PASSWORD}' -n kind-local | base64 -d && echo
 ******
 ```
 

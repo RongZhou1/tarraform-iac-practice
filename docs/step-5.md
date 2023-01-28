@@ -40,7 +40,9 @@ ingress-nginx-controller-admission   ClusterIP   10.96.44.94     <none>        4
 根据需求，需要改写请求的访问路径，去掉前缀 /local/api/book-service 并将后面的路径导向 kind-local 环境的 book-service 服务
 
 - 阅读 [文档示例](https://kubernetes.github.io/ingress-nginx/examples/rewrite/)
-- 已完成 ingress 对 book-service 的路由，见文件 [ingress/main.tf](../terraform/kind/layer2/local/ingress)，请在上级 main.tf 文件中加载该模块，给定正确参数
+- 已完成 ingress 对 book-service 的路由，见文件 [ingress/main.tf](../terraform/kind/layer2/local/ingress)，
+  - 完成 web-app 和 order-service 的路由配置，使能满足需求
+  - 请在上级 main.tf 文件中加载该模块，将应用在 k8s 中的域名作为参数传入 ingress 模块
 - 由于集群完全重建，请重新安装 layer2 的基础设施
 - 使用 kubectl 重新部署应用程序
 

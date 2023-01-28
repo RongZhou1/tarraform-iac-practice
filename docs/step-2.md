@@ -31,7 +31,7 @@ Step 2， 编写K8S配置文件，部署应用程序到集群
     book-service-7db45cff75-d4c7d   0/1     ErrImagePull   0          73s
     ```
   - 使用配置文件创建部署
-    > 上面的部署失败了，原因是 `ErrImagePull`，因为默认从远端镜像仓库拉取镜像。我们定义配置文件，设置参数 `imagePullPolicy: Never` 使可以从本地拉取镜像。 此外，观察到
+    > 上面的部署失败了，原因是 `ErrImagePull`，因为默认从远端镜像仓库拉取镜像。我们定义配置文件，设置参数 `imagePullPolicy: Never` 使可以从本地拉取镜像。
     >
     > 此外，观察应用程序配置文件 [application.yml](../apps/book-service/src/main/resources/application.yml) 需要数据库的配置参数，因此，需要另做两件事情：
     >
@@ -146,7 +146,7 @@ $ kubectl port-forward service/web-app 8090:80
 }
 ```
 
-curl http://localhost:8090/orders，确认与 `order-service` 通信正常
+curl http://localhost:8090/orders， 确认与 `order-service` 通信正常
 
 ```json
 {

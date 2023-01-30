@@ -3,7 +3,8 @@
 ------
 基于本地环境的 Terraform IaC 练习。
 
-本案例以简单的微服务模拟应用程序代码，以本地集群模拟实际集群环境，step by step 学习基于 `Terraform`、 `ArgoCD` 的 K8S 集群下搭建自动化、可重复执行、易于管理的不可变基础设施的基本思路和方法。
+本案例以简单的微服务模拟应用程序代码，以本地集群模拟实际集群环境，
+step by step 学习基于 `Terraform`、 `ArgoCD` 的 K8S 集群下搭建自动化、可重复执行、易于管理的不可变基础设施的基本思路和方法。
 
 在掌握方法后，可自行利用云资源进一步学习，以覆盖本案例未涉及到的内容，如：Terraform 的远程状态管理，云服务的 Terraform Provider 等。
 
@@ -54,5 +55,8 @@
   /stable/api/xxx  -> kind-stable 环境的某服务
   ```
 
+## 使用方法
+
+检出分支 step-0 `git checkout step-0`，根据 README 中的需求分析和任务清单进行练习即可。
 
 

@@ -17,7 +17,7 @@ Step 4. 部署应用程序到两套环境
 - 有些来源于不同环境的应用配置，我们将它们放到名为 `${SERVICE_NAME}` 的配置文件中
 -
 ### 4.1 资源声明文件中统一使用管理配置文件
-- 执行 `git rebase step-4`
+- 执行 `git rebase origin/step-4`
 - 修改 Step 2 中 创建的 `deployment.yaml` 和 `service.yaml`
   - 统一使用 `${SERVICE_NAME}` 替换服务名称，之后可以通过 `envsubst` 工具进行环境变量的替换
   - 添加 `version: ${VERSION}` 作为资源的 label

@@ -15,10 +15,12 @@ Step 5. 创建 Ingress 控制器，配置出口路由
 
 ### 5.1 使用 Terraform 创建和管理 Ingress 控制器
 
-- 执行 `git rebase step-5`
+- 执行 `git rebase origin/step-5`
 - 阅读文档，理解 [Ingress](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/)，[Ingress Controller](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress-controllers/) 的基本概念
   本例选用 Nginx Ingress 作为 Ingress 控制器
 - 配置支持 Nginx Ingress 的 Kind 集群，参考 [Kind文档](https://kind.sigs.k8s.io/docs/user/ingress/)
+  > 由于修改集群配置会导致集群重建，需要先将 layer2 的资源进行释放
+  - 使用命令 `terraform destroy` 释放 layer2 的资源
   - 参照文档修改文件 [layer0/main.tf](../terraform/kind/layer0/main.tf) 中的 `nodes` 配置
   - 使用命令 `terraform destroy`, `terraform apply` 重建集群
 - 在 layer1 安装 Nginx Ingress 控制器，它是集群共享的，因此不同命名空间共用使用

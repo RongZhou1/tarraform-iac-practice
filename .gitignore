@@ -33,3 +33,4 @@ tfplan
 ###
 application-mac.yml
 *-port-forward.log
+.tool-versions

@@ -23,6 +23,7 @@
 - 运行以下脚本
 
   ```bash
+  $ terraform init --upgrade
   $ terraform plan
   $ terraform apply --auto-approve
   ```

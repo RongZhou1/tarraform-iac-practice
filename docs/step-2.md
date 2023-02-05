@@ -8,14 +8,14 @@ Step 2， 编写K8S配置文件，部署应用程序到集群
 
 ### 2.1 使用 Kubectl 创建部署
 
-- 执行 `git rebase step-2`
+- 执行 `git rebase origin/step-2`
 - 阅读[官方文档](https://kubernetes.io/zh-cn/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/)，了解基本概念
 - 部署 `book-service`
   - 打包创建容器镜像
 
     > 向 K8S 部署应用程序时，需要指定其容器镜像以，因此需要先构建镜像。
 
-    执行以下脚本创建本地镜像 `book-service:latest` ，并加载到 kind 集群中.
+    执行以下脚本创建本地镜像 `book-service:latest` (需要 Java17+) ，并加载到 kind 集群中.
 
     ```bash
     $ cd ./apps/book-service

@@ -9,7 +9,7 @@ Step 6. GitOps 持续部署
 
 
 ### 6-1.1 使用 GitHub Actions 创建 Workflow
-- 执行 `git rebase step-6-1`
+- 执行 `git rebase origin/step-6-1`
 - 阅读了解 GitHub Actions，[文档](https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions)
 - 按照已完成的流水线设计构建 book-service 的 workflow，workflow 代码已完成，见 [.github/workflows/book-service.yaml](../.github/workflows/book-service.yaml)
   ![持续集成流水线价值流图](./images/CI.png)

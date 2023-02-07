@@ -12,8 +12,13 @@ Step 1， 搭建本地K8S集群
 - [kind](https://registry.terraform.io/providers/kyma-incubator/kind/0.0.11)，K8S的本地集群工具，类似的还有 [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)，Kubernetes 命令行工具
 - [Terraform](https://www.terraform.io/)，基础设施自动化编排工具
+- JDK17，Java编译工具（应用程序本地打包时使用）
 
-可以通过执行该文件 [setup_macos.sh](./../scripts/setup_macos.sh) 安装或官网下载安装。
+安装：
+- 执行 [setup_macos.sh](./../scripts/setup_macos.sh) 安装或官网下载安装 kind, kubectl, terraform
+- 下载安装 [Amazon Corretto 17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/macos-install.html) 或其他 Java 17 openJdk
+
+
 
 #### 验收条件
 
@@ -28,6 +33,9 @@ Server Version: xxx
 
 $ terraform -v
 Terraform xxx
+
+$ javac -version
+javac 17.x.x
 ```
 
 ### 1.2 使用 Kind 创建集群

@@ -19,6 +19,7 @@ Docker 环境准备：
   - [Colima 设置](https://github.com/abiosoft/colima#customizing-the-vm)
 
 安装：
+- 执行 `git rebase origin/step-1`
 - 执行 [setup_macos.sh](./../scripts/setup_macos.sh) 安装或官网下载安装 kind, kubectl, terraform
 - 下载安装 [Amazon Corretto 17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/macos-install.html) 或其他 Java 17 openJdk
 
@@ -78,7 +79,6 @@ No kind clusters found.
 
 尽管使用 kind 命令可以很容易创建集群，我们期望你通过该任务能够熟悉 Terraform 的基本命令。
 
-- 执行 `git rebase origin/step-1`
 - 在目录 [terraform/kind/layer0](../terraform/kind/layer0) 下创建 `main.tf`
 - 参考 [kind provider](https://registry.terraform.io/providers/justenwalker/kind/latest) 编写脚本，创建名为 `kind` 的 kind 集群
 - 练习使用命令，观察输出和 tfstate 文件，并理解含义

@@ -14,9 +14,14 @@ Step 1， 搭建本地K8S集群
 - [Terraform](https://www.terraform.io/)，基础设施自动化编排工具
 - JDK17，Java编译工具（应用程序本地打包时使用）
 
+Docker 环境准备：
+- 设置 Container Runtime 的可用资源限制为 4 cpu, memory 8G，以保证足够的运行资源。
+  - [Colima 设置](https://github.com/abiosoft/colima#customizing-the-vm)
+
 安装：
 - 执行 [setup_macos.sh](./../scripts/setup_macos.sh) 安装或官网下载安装 kind, kubectl, terraform
 - 下载安装 [Amazon Corretto 17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/macos-install.html) 或其他 Java 17 openJdk
+
 
 
 

@@ -57,10 +57,10 @@ spec:
         - secretRef:
             name: web-app-terraform
             optional: true
-        image: web-app:sha-cfc9f36
+        image: ghcr.io/rongzhou1/web-app:sha-cfc9f36
         imagePullPolicy: IfNotPresent
         name: web-app
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: todo
+      - name: ghcr-login-secret

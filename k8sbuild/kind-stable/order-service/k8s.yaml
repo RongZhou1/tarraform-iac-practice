@@ -57,10 +57,10 @@ spec:
         - secretRef:
             name: order-service-terraform
             optional: true
-        image: order-service:sha-cfc9f36
+        image: ghcr.io/rongzhou1/order-service:sha-cfc9f36
         imagePullPolicy: IfNotPresent
         name: order-service
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: todo
+      - name: ghcr-login-secret

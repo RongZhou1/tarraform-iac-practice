@@ -2,8 +2,8 @@ Step 6. GitOps 持续部署
 --
 ## 6-1 使用 Git 管理 K8S配置文件和 Image 版本
 
-- [ ] 使用 GitHub Actions 创建 Workflow
-- [ ] 使用 GitHub container registry 里的 image 部署 local-stable
+- [x] 使用 GitHub Actions 创建 Workflow
+- [x] 使用 GitHub container registry 里的 image 部署 local-stable
 
 
 

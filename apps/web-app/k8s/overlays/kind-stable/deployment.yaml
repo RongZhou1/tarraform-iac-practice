@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${SERVICE_NAME}
+  labels:
+    app: ${SERVICE_NAME}
+    version: ${VERSION}
+spec:
+  template:
+    spec:
+      containers:
+        - name: ${SERVICE_NAME}
+          image: ${IMAGE_NAME}
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: ${IMAGE_PULL_SECRET}

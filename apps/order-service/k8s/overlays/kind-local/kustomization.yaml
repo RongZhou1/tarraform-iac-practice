@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+  - configmap.yaml
+
+namespace: kind-local
+
+patchesStrategicMerge:
+  - deployment.yaml

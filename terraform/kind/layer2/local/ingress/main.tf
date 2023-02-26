@@ -1,9 +1,13 @@
 locals {
   apps        = {
     book_service = "book-service"
+    order_service ="order-service"
+    web_app = "web-app"
   }
   paths = {
     book_service = "/${var.environment}/api/${local.apps.book_service}"
+    order_service = "/${var.environment}/api/${local.apps.order_service}"
+    web_app = "/${var.environment}/api/${local.apps.web_app}"
   }
 }
 
@@ -29,6 +33,30 @@ resource "kubernetes_ingress_v1" "nginx-ingress" {
           backend {
             service {
               name = local.apps.book_service
+              port {
+                number = 80
+              }
+            }
+          }
+        }
+        path {
+          path      = "${local.paths.order_service}(/|$)(.*)"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = local.apps.order_service
+              port {
+                number = 80
+              }
+            }
+          }
+        }
+        path {
+          path      = "${local.paths.web_app}(/|$)(.*)"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = local.apps.web_app
               port {
                 number = 80
               }

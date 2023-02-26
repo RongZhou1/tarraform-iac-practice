@@ -1,8 +1,8 @@
 Step 5. 创建 Ingress 控制器，配置出口路由
 --
 
-- [ ] 使用 Terraform 创建和管理 Ingress 控制器
-- [ ] 配置出口路由
+- [x] 使用 Terraform 创建和管理 Ingress 控制器
+- [x] 配置出口路由
 
 
 本例使用本地环境模拟服务的运行环境，屏蔽了很多网络很DNS配置的复杂性。

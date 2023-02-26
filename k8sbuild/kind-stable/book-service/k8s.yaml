@@ -57,10 +57,10 @@ spec:
         - secretRef:
             name: book-service-terraform
             optional: true
-        image: book-service:sha-7bfb4c3
+        image: ghcr.io/rongzhou1/book-service:sha-7bfb4c3
         imagePullPolicy: IfNotPresent
         name: book-service
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: todo
+      - name: ghcr-login-secret

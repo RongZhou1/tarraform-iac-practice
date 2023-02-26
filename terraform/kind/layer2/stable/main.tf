@@ -1,16 +1,21 @@
 locals {
   namespace   = "kind-stable"
-  platform   = "kind"
+  platform    = "kind"
+  environment = "stable"
 }
 
 variable "db_password" {}
+variable "github_token" {}
+variable "github_user" {}
 
-
-# 使用 provider - kubernetes_namespace 创建名为 local.namespece 的命名空间
-# Task 3.1
+resource "kubernetes_namespace" "namespace" {
+  metadata {
+    name = local.namespace
+  }
+}
 
 module "mysqldb" {
-  depends_on = []  # Task 3.2
+  depends_on = [kubernetes_namespace.namespace]
 
   source = "../../../module/mysql"
 
@@ -19,5 +24,47 @@ module "mysqldb" {
   db_password = var.db_password
 }
 
-# 使用 module 调用 book-service 中的 terraform 资源
-# Task 3.3
+module "nginx-ingress" {
+  depends_on = [kubernetes_namespace.namespace]
+
+  source = "./ingress"
+
+  environment = local.environment
+  namespace   = local.namespace
+}
+
+module "github-registry" {
+  source = "../../../module/github-registry"
+  github_token = var.github_token
+  github_user = var.github_user
+  namespace = local.namespace
+}
+
+module "book-service" {
+  depends_on = [module.mysqldb]
+
+  source    = "../../../../apps/book-service/terraform/kind-stable"
+  namespace = local.namespace
+
+  db_host     = module.mysqldb.mysql_db_host
+  db_password = module.mysqldb.mysql_db_password
+  db_port     = module.mysqldb.mysql_db_port
+  db_user     = module.mysqldb.mysql_db_user
+}
+
+#
+#module "order-service" {
+#  source      = "../../../../apps/order-service/terraform/kind-stable"
+#  db_host     = module.mysqldb.mysql_db_host
+#  db_password = module.mysqldb.mysql_db_password
+#  db_port     = module.mysqldb.mysql_db_port
+#  db_user     = module.mysqldb.mysql_db_user
+#  namespace   = local.namespace
+#}
+#
+#module "web-app" {
+#  source            = "../../../../apps/web-app/terraform/kind-stable"
+#  namespace         = local.namespace
+#  book_service_url  = "http://${module.book-service.service-name}"
+#  order_service_url = "http://${module.order-service.service-name}"
+#}

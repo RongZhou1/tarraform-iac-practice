@@ -22,6 +22,17 @@ module "create-db-book-service" {
   password  = module.mysqldb.mysql_db_password
 }
 
+module "create-db-order-service" {
+  source = "../../../terraform/module/mysql-create-db"
+
+  namespace = local.namespace
+  db_name   = "order_service"
+  host      = module.mysqldb.mysql_db_host
+  port      = module.mysqldb.mysql_db_port
+  user      = module.mysqldb.mysql_db_user
+  password  = module.mysqldb.mysql_db_password
+}
+
 resource "kubernetes_secret" "db-secret" {
 
   metadata {

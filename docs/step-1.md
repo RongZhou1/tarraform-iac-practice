@@ -1,9 +1,16 @@
 Step 1， 搭建本地K8S集群
 --
 
-- [ ] 环境准备，软件安装
-- [ ] 使用 Kind 创建集群
-- [ ] 使用 Terraform 管理集群，熟悉其工作流程
+- [x] 环境准备，软件安装
+  - [x] kind: 0.17.0
+  - [x] kubectl: Client Version: v1.22.5  Server Version: v1.25.3
+  - [x] terraform: Terraform v1.3.8
+  - [x] java: openjdk version "17.0.6"
+- [x] 使用 Kind 创建集群
+   `kind create cluster`
+   `kind get clusters`
+   `kind delete clusters`
+- [x] 使用 Terraform 管理集群，熟悉其工作流程
 
 ### 1.1 环境准备，软件安装
 

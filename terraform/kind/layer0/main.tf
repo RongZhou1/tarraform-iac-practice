@@ -20,3 +20,4 @@ resource "kind_cluster" "kind-cluster" {
           protocol: TCP
 EOF
 }
+

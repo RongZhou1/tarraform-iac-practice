@@ -42,3 +42,19 @@ module "book-service" {
   db_port     = module.mysqldb.mysql_db_port
   db_user     = module.mysqldb.mysql_db_user
 }
+
+module "order-service" {
+  source      = "../../../../apps/order-service/terraform/kind-local"
+  db_host     = module.mysqldb.mysql_db_host
+  db_password = module.mysqldb.mysql_db_password
+  db_port     = module.mysqldb.mysql_db_port
+  db_user     = module.mysqldb.mysql_db_user
+  namespace   = local.namespace
+}
+
+module "web-app" {
+  source            = "../../../../apps/web-app/terraform/kind-local"
+  namespace         = local.namespace
+  book_service_url  = "http://${module.book-service.service-name}"
+  order_service_url = "http://${module.order-service.service-name}"
+}

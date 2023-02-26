@@ -1,9 +1,9 @@
 locals {
-  app_name = "book-service"
+  app_name = "order-service"
   db_name  = replace(local.app_name, "-", "_")
 }
 
-resource "kubernetes_secret" "book-service" {
+resource "kubernetes_secret" "order-service" {
   metadata {
     name      = "${local.app_name}-terraform"
     namespace = var.namespace
@@ -17,7 +17,7 @@ resource "kubernetes_secret" "book-service" {
   }
 }
 
-resource "kubernetes_config_map" "book-service" {
+resource "kubernetes_config_map" "order-service" {
   metadata {
     name      = "${local.app_name}-terraform"
     namespace = var.namespace

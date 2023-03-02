@@ -68,3 +68,37 @@ module "web-app" {
   book_service_url  = "http://${module.book-service.service-name}"
   order_service_url = "http://${module.order-service.service-name}"
 }
+
+module "book-service-argocd" {
+  source = "../../../module/argocd-app"
+  target_revision = "step-0"
+  argocd_namespace = "argocd"
+  destination_namespace = local.namespace
+  name = "${module.book-service.service-name}-${local.environment}-application"
+  project = "default"
+  repo_url = "https://github.com/RongZhou1/tarraform-iac-practice.git"
+  path = "k8sbuild/${local.namespace}/${module.book-service.service-name}"
+}
+
+module "order-service-argocd" {
+  source = "../../../module/argocd-app"
+  target_revision = "step-0"
+  argocd_namespace = "argocd"
+  destination_namespace = local.namespace
+  name = "${module.order-service.service-name}-${local.environment}-application"
+  project = "default"
+  repo_url = "https://github.com/RongZhou1/tarraform-iac-practice.git"
+  path = "k8sbuild/${local.namespace}/${module.order-service.service-name}"
+}
+
+module "web-app-argocd" {
+  source = "../../../module/argocd-app"
+  target_revision = "step-0"
+  argocd_namespace = "argocd"
+  destination_namespace = local.namespace
+  name = "${module.web-app.service-name}-${local.environment}-application"
+  project = "default"
+  repo_url = "https://github.com/RongZhou1/tarraform-iac-practice.git"
+  path = "k8sbuild/${local.namespace}/${module.web-app.service-name}"
+  
+}

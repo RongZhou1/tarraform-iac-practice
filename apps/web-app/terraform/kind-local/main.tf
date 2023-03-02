@@ -14,3 +14,7 @@ resource "kubernetes_config_map" "web-app" {
   }
 }
 
+output "service-name" {
+  value = local.app_name
+}
+
